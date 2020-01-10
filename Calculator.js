@@ -45,7 +45,7 @@ function calculateCurrentGrade() {
     var gradeCal = Math.ceil(sumAllScore / (getHWWeight + getCWWeight + getPartWeight + getTestWeight + getProWeight) * 100);
 
     if((averagePro > 100) || (averageTest > 100) || (averagePart > 100) || (averageCW > 100) || (averageHW > 100)){
-        document.getElementById("f1").innerHTML = "Error, Grades Entered cannot exceed 100."
+        document.getElementById("c1").innerHTML = "Error, Grades Entered cannot exceed 100."
     } else {
 
         document.getElementById("c1").innerHTML = "Your current grade is " + gradeCal;
@@ -61,11 +61,17 @@ function calculateGradeNeeded(){
     var curPartFinal = (cGrade/100) * (100-getPageWeight);
     var wantedPartFinal = ((getPageGrade - curPartFinal) / getPageWeight) * 100;
     //var giveFinalGrade = getPageGrade - cGrade / (getPageWeight / 100);
-    if(wantedPartFinal <-200){
-        document.getElementById("f1").innerHTML = "You probably don't want to use a number that low.";
+    var totalWeight = (parseInt(document.getElementById("hwWeight").value) + parseInt(document.getElementById("cwWeight").value) + parseInt(document.getElementById("testWeight").value) + parseInt(document.getElementById("partWeight").value) + parseInt(document.getElementById("proWeight").value));
+    var allWeight = totalWeight + parseInt(document.getElementById("lW").value);
+    if(allWeight !== 100){
+        document.getElementById("f1").innerHTML = "Error, All Weight Values do not add up to 100.";
+        return;
+    }
+    if((wantedPartFinal <-170) || (wantedPartFinal >170)){
+        document.getElementById("f1").innerHTML = "You probably don't want to use a number that Low/High in the grades box.";
     } else {
         if(isNaN(wantedPartFinal)){
-            document.getElementById("f1").innerHTML = "Error, All Weight Values do not add up to 100. Or you entered an illegitimate value for 'Grade(s)'";
+            document.getElementById("f1").innerHTML = "You entered an illegitimate value for 'Grade(s)'";
         } else {
             document.getElementById("f1").innerHTML = "You need to score " + wantedPartFinal + " to get an A+ in the class.";
         }
