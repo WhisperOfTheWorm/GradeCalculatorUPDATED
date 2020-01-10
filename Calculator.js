@@ -68,7 +68,7 @@ function calculateGradeNeeded(){
         return;
     }
     if((wantedPartFinal <-170) || (wantedPartFinal >170)){
-        document.getElementById("f1").innerHTML = "You probably don't want to use a number that Low/High in the grades box.";
+        document.getElementById("f1").innerHTML = "You probably don't want to use a number that Low/High in the grades box(es). Or it could be that you simply completely failed the class. *slow clap*";
     } else {
         if(isNaN(wantedPartFinal)){
             document.getElementById("f1").innerHTML = "You entered an illegitimate value for 'Grade(s)'";
@@ -125,5 +125,5 @@ function resetGradeCal(){
                             document.getElementById(3).style.backgroundColor = "#ff8c69";
                                 document.getElementById(4).style.backgroundColor = "#ff8c69";
                                     document.getElementById(5).style.backgroundColor = "#ff8c69";
-                                        console.log(resetGradeCal);
+                                        //console.log(resetGradeCal);
         }
